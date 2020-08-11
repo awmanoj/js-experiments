@@ -1,0 +1,17 @@
+<canvas id="canvas" width="1000" height="1000"></canvas>
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+
+	ctx.strokeStyle = "red";
+
+  for (var i = 0; i <200; i++) {
+    ctx.beginPath();
+
+    ctx.rotate(20 * Math.PI / 180);
+    ctx.fillRect(500, 200, 10, 50);
+
+    ctx.stroke();
+  }
+
+</script>
