@@ -36,6 +36,22 @@
 
 		var constant = math.complex(0.28, 0.01);	
 
+		function pointToColor(point) {
+			var red = point.re * 255;
+			var green = point.im * 255;
+			return `rgb(${red}, ${green}, 0)`;
+		}
+
+		function drawPixel(x, y, color) {
+			ctx.fillStyle = color;
+			ctx.fillRect(x, y, 1, 1);
+		}
+
+		function draw() {
+			var color = pointToColor(constant);
+			drawPixel(mouseX, mouseY, color);
+		}
+
 		function pixelToPoint(x, y) {
 			var zx = (x/width)*2-1;
 			var zy = 1-(y/height)*2;
@@ -44,6 +60,7 @@
 
 		function update() {
 			header.innerHTML = constant.toString();
+			draw();
 		}
 
 		function move(event) {
