@@ -34,6 +34,31 @@
 		var mouseX = 0;	
 		var mouseY = 0;
 
+		var constant = math.complex(0.28, 0.01);	
+
+		function pixelToPoint(x, y) {
+			var zx = (x/width)*2-1;
+			var zy = 1-(y/height)*2;
+			return math.complex(zx, zy);
+		}
+
+		function update() {
+			header.innerHTML = constant.toString();
+		}
+
+		function move(event) {
+			mouseX = event.clientX-canvas.offsetLeft;
+			mouseY = event.clientY-canvas.offsetTop;
+
+			constant = pixelToPoint(mouseX, mouseY);
+
+			constant.re = math.round(constant.re*100)/100
+			constant.im = math.round(constant.im*100)/100
+
+			update();
+		}
+
+		canvas.addEventListener('pointermove', move);
 	</script>
 
 </html>
