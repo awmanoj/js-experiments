@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- copied from https://repl.it/talk/learn/Julia-Fractals-in-JavaScript/12806 --!>
+<html>
+	<head><title>Fun with fractals</title></head>
+	<style>
+		body {
+			background: black;
+			color: white;
+		}
+		canvas {
+			border: 1px solid white;
+		}
+	</style>
+
+	<body>
+		<h2></h2>
+		<canvas></canvas>
+	</body>
+
+	<!-- Import math.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.6.0/math.min.js"></script>
+	<script> 
+		var header = document.querySelector('h2');
+		var canvas = document.querySelector('canvas');
+		var ctx = canvas.getContext('2d');
+
+		var width = 200;
+		var height = 200;
+
+		canvas.width = width;
+		canvas.height = height;
+
+		// x, y coordinates
+		var mouseX = 0;	
+		var mouseY = 0;
+
+	</script>
+
+</html>
