@@ -48,8 +48,15 @@
 		}
 
 		function draw() {
-			var color = pointToColor(constant);
-			drawPixel(mouseX, mouseY, color);
+			for (var y=0; y<height; y++) {
+				for (var x=0; x<width; x++) {
+					var point = pixelToPoint(x, y);
+
+					var color = pointToColor(point);
+
+					drawPixel(x, y, color);
+				}
+			}
 		}
 
 		function pixelToPoint(x, y) {
@@ -76,6 +83,7 @@
 		}
 
 		canvas.addEventListener('pointermove', move);
+		update();
 	</script>
 
 </html>
