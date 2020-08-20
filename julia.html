@@ -24,8 +24,8 @@
 		var canvas = document.querySelector('canvas');
 		var ctx = canvas.getContext('2d');
 
-		var width = 200;
-		var height = 200;
+		var width = 600;
+		var height = 600;
 
 		canvas.width = width;
 		canvas.height = height;
@@ -36,12 +36,31 @@
 
 		var constant = math.complex(0.28, 0.01);	
 
-		function pointToColor(point) {
-			point = point.div(constant);
+		var maxIterations = 64;
 
-			var red = point.re * 255;
-			var green = point.im * 255;
-			var blue = math.abs(point) * 255; 
+		function julia(z, i = 0) {
+			z = z.mul(z);
+			z = z.add(constant);
+			
+			if(math.abs(z) > 2 || i == maxIterations) {
+				return i;
+			} else {
+				return julia(z, i+1);
+			}
+		}
+
+		function pointToColor(point) {
+			var iterations = julia(point);
+
+			var percentage = iterations/maxIterations;
+
+			var red = percentage * 255;
+			var green = percentage * 255;
+			var blue = percentage * 255; 
+
+			console.log("::r", iterations, maxIterations, red);
+			console.log("::g", green);
+			console.log("::b", blue);
 
 			return `rgb(${red}, ${green}, ${blue})`;
 		}
@@ -87,7 +106,7 @@
 		}
 
 		canvas.addEventListener('pointermove', move);
-		update();
+		//update();
 	</script>
 
 </html>
