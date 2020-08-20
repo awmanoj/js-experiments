@@ -37,13 +37,11 @@
 		var constant = math.complex(0.28, 0.01);	
 
 		function pointToColor(point) {
-			point = point.div(constant);
+			point = point.sub(constant);
 
 			var red = point.re * 255;
 			var green = point.im * 255;
-			var blue = math.abs(point) * 255; 
-
-			return `rgb(${red}, ${green}, ${blue})`;
+			return `rgb(${red}, ${green}, 0)`;
 		}
 
 		function drawPixel(x, y, color) {
